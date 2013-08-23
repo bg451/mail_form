@@ -20,4 +20,14 @@ class MailFormTest < ActiveSupport::TestCase
     assert_nil sample.name
     assert_nil sample.email 
   end
+  test "sample mail can ask if an attr is present" do
+    sample = SampleMail.new
+    assert !sample.name?
+
+    sample.name = "user"
+    assert sample.name?
+
+    sample.email = ""
+    assert !sample.email?
+  end
 end
